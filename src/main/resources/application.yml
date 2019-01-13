@@ -1,0 +1,2 @@
+spring.application.name: sample-spring-kotlin-microservice
+management.endpoints.web.exposure.include: '*'
