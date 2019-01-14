@@ -14,11 +14,17 @@ import springfox.documentation.builders.PathSelectors
 import springfox.documentation.builders.RequestHandlerSelectors
 import springfox.documentation.spi.DocumentationType
 import springfox.documentation.spring.web.plugins.Docket
+import org.springframework.boot.info.BuildProperties
+import org.springframework.beans.factory.annotation.Autowired
+import java.util.*
 
 
 @Configuration
 @EnableSwagger2
 class SwaggerConfig {
+
+    @Autowired
+    lateinit var build: Optional<BuildProperties>
 
     @Bean
     fun api(): Docket {
