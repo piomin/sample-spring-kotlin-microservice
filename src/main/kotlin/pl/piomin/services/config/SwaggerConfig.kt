@@ -16,6 +16,7 @@ import springfox.documentation.spi.DocumentationType
 import springfox.documentation.spring.web.plugins.Docket
 import org.springframework.boot.info.BuildProperties
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.info.GitProperties
 import java.util.*
 
 
@@ -25,14 +26,22 @@ class SwaggerConfig {
 
     @Autowired
     lateinit var build: Optional<BuildProperties>
+    @Autowired
+    lateinit var git: Optional<GitProperties>
 
     @Bean
     fun api(): Docket {
+        var version = "1.0"
+        if (build.isPresent && git.isPresent) {
+            var buildInfo = build.get()
+            var gitInfo = git.get()
+            version = "${buildInfo.version}-${gitInfo.shortCommitId}-${gitInfo.branch}"
+        }
         return Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo("1.0"))
+                .apiInfo(apiInfo(version))
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
+                .paths{ it.equals("/persons")}
                 .build()
                 .useDefaultResponseMessages(false)
                 .forCodeGeneration(true)

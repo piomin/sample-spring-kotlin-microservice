@@ -13,7 +13,7 @@ class PersonController {
     lateinit var repository: PersonRepository
 
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: Int): Person ? = repository.findById(id)
+    fun findById(@PathVariable id: Int): Person? = repository.findById(id)
 
     @GetMapping
     fun findAll(): List<Person> = repository.findAll()
