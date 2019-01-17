@@ -5,7 +5,7 @@ import pl.piomin.services.model.Person
 
 @Repository
 class PersonRepository {
-    val persons: MutableList<Person> = ArrayList()
+    val persons = mutableListOf<Person>()
 
     fun findById(id: Int): Person? {
         return persons.singleOrNull { it.id == id }
@@ -16,14 +16,16 @@ class PersonRepository {
     }
 
     fun save(person: Person): Person {
-        person.id = persons.size + 1
+        person.id = (persons.maxBy { it.id }?.id ?: 0) + 1
         persons.add(person)
         return person
     }
 
     fun update(person: Person): Person {
-        val index = persons.indexOf(person)
-        persons[index] = person
+        val index = persons.indexOfFirst { it.id == person.id }
+        if (index >= 0) {
+            persons[index] = person
+        }
         return person
     }
 
