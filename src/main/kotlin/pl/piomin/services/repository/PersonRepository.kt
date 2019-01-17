@@ -16,7 +16,7 @@ class PersonRepository {
     }
 
     fun save(person: Person): Person {
-        person.id = (persons.maxBy { it.id }?.id ?: 0) + 1
+        person.id = (persons.maxBy { it.id!! }?.id ?: 0) + 1
         persons.add(person)
         return person
     }

@@ -1,12 +1,16 @@
 package pl.piomin.services.controller
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import pl.piomin.services.model.Person
 import pl.piomin.services.repository.PersonRepository
 
 @RestController
 @RequestMapping("/persons")
-class PersonController(val repository: PersonRepository) {
+class PersonController {
+
+    @Autowired
+    lateinit var repository: PersonRepository
 
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Int): Person? = repository.findById(id)
