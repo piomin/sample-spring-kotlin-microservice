@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.8.RELEASE</version>
+        <version>2.1.2.RELEASE</version>
     </parent>
     <groupId>pl.piomin.services</groupId>
     <artifactId>sample-spring-kotlin-microservice</artifactId>
@@ -43,11 +43,6 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
-        </dependency>
-        <dependency>
-            <groupId>io.dekorate</groupId>
-            <artifactId>openshift-spring-starter</artifactId>
-            <version>0.8.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
