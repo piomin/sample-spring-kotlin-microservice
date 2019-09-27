@@ -22,11 +22,11 @@ class PersonControllerTests {
 
     @Test
     fun test1AddPerson() {
-        var person = Person(null, "John Smith", 20, Gender.MALE)
+        var person = Person(null, "Anna Thompson", 20, Gender.FEMALE)
         person = template.postForObject("/persons", person, Person::class.java)
         Assert.assertNotNull(person)
         Assert.assertNotNull(person.id)
-        Assert.assertEquals(1, person.id)
+        Assert.assertEquals(4, person.id)
     }
 
     @Test
