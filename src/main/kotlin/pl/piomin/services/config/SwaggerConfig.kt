@@ -22,12 +22,7 @@ import java.util.*
 
 @Configuration
 @EnableSwagger2
-class SwaggerConfig {
-
-    @Autowired
-    lateinit var build: Optional<BuildProperties>
-    @Autowired
-    lateinit var git: Optional<GitProperties>
+class SwaggerConfig(var build: Optional<BuildProperties>, var git: Optional<GitProperties>) {
 
     @Bean
     fun api(): Docket {
