@@ -29,7 +29,7 @@ class PersonController(var repository: PersonRepository) {
 
     @PostMapping("/long-running")
     fun addLongRunning(@RequestBody person: Person): DeferredResult<Person> {
-        var result: DeferredResult<Person>  = DeferredResult<Person>()
+        var result: DeferredResult<Person>  = DeferredResult()
         GlobalScope.launch {
             logger.info("Person long-running: {}", person)
             delay(10000L)
