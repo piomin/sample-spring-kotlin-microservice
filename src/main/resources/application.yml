@@ -1,2 +1,19 @@
-spring.application.name: sample-spring-kotlin-microservice
-management.endpoints.web.exposure.include: '*'
+spring:
+  application:
+    name: sample-spring-kotlin-microservice
+  datasource:
+    url: jdbc:postgresql://192.168.99.100:5432/postgres
+    hikari:
+      connection-timeout: 2000
+      initialization-fail-timeout: 0
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  rabbitmq:
+    host: 192.168.99.100
+    port: 5762
+    connection-timeout: 2000
+management:
+  endpoints.web.exposure.include: '*'
+  endpoint:
+    health:
+      show-details: always # optionally - just for information
