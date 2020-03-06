@@ -1,0 +1,115 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus
+  labels:
+    name: prometheus
+data:
+  prometheus.yml: |-
+    global:
+      query_log_file: /prometheus/query.log
+    scrape_configs:
+      - job_name: 'springboot'
+        metrics_path: /actuator/prometheus
+        scrape_interval: 5s
+        kubernetes_sd_configs:
+        - role: endpoints
+          namespaces:
+            names:
+              - default
+
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_service_label_app]
+            separator: ;
+            regex: sample-spring-kotlin-microservice
+            replacement: $1
+            action: keep
+          - source_labels: [__meta_kubernetes_endpoint_port_name]
+            separator: ;
+            regex: http
+            replacement: $1
+            action: keep
+          - source_labels: [__meta_kubernetes_namespace]
+            separator: ;
+            regex: (.*)
+            target_label: namespace
+            replacement: $1
+            action: replace
+          - source_labels: [__meta_kubernetes_pod_name]
+            separator: ;
+            regex: (.*)
+            target_label: pod
+            replacement: $1
+            action: replace
+          - source_labels: [__meta_kubernetes_service_name]
+            separator: ;
+            regex: (.*)
+            target_label: service
+            replacement: $1
+            action: replace
+          - source_labels: [__meta_kubernetes_service_name]
+            separator: ;
+            regex: (.*)
+            target_label: job
+            replacement: ${1}
+            action: replace
+          - separator: ;
+            regex: (.*)
+            target_label: endpoint
+            replacement: http
+            action: replace
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  labels:
+    app: prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+        - name: prometheus
+          image: prom/prometheus:latest
+          args:
+            - "--config.file=/prometheus2/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus/"
+          ports:
+            - containerPort: 9090
+              name: http
+          volumeMounts:
+            - name: prometheus-storage-volume
+              mountPath: /prometheus/
+            - name: prometheus-config-map
+              mountPath: /prometheus2/
+      volumes:
+        - name: prometheus-storage-volume
+          emptyDir: {}
+        - name: prometheus-config-map
+          configMap:
+            name: prometheus
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+  labels:
+    app: prometheus
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/port:   '9090'
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 9090
+      nodePort: 30000
+  selector:
+    app: prometheus

@@ -1,0 +1,10 @@
+apiVersion: skaffold/v2alpha1
+kind: Config
+metadata:
+  name: sample-spring-kotlin-microservice
+build:
+  artifacts:
+    - image: piomin/sample-spring-kotlin-microservice
+      jib: {}
+  tagPolicy:
+    gitCommit: {}

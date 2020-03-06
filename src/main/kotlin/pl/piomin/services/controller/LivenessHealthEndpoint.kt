@@ -2,7 +2,6 @@ package pl.piomin.services.controller
 
 import org.springframework.boot.actuate.endpoint.annotation.*
 import org.springframework.boot.actuate.health.Health
-import org.springframework.boot.actuate.health.Status
 import org.springframework.stereotype.Component
 
 @Component

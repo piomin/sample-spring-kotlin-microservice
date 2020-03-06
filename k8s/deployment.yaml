@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-spring-kotlin-microservice
+  labels:
+    app: sample-spring-kotlin-microservice
+spec:
+  selector:
+    matchLabels:
+      app: sample-spring-kotlin-microservice
+  template:
+    metadata:
+      labels:
+        app: sample-spring-kotlin-microservice
+    spec:
+      containers:
+      - name: sample-spring-kotlin-microservice
+        image: piomin/sample-spring-kotlin-microservice
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "1000m"
+        ports:
+        - containerPort: 8080
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-spring-kotlin-microservice
+  labels:
+    app: sample-spring-kotlin-microservice
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: http
+  selector:
+    app: sample-spring-kotlin-microservice
