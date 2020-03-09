@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sample-spring-kotlin-microservice
+data:
+  application-rollbacktest.yml: |-
+    property1: 123456

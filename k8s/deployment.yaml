@@ -26,6 +26,13 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        volumeMounts:
+        - name: config-map-volume
+          mountPath: /config/
+      volumes:
+        - name: config-map-volume
+          configMap:
+            name: sample-spring-kotlin-microservice
 ---
 apiVersion: v1
 kind: Service
