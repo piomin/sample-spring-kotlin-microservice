@@ -21,3 +21,4 @@ management:
       show-details: always # optionally - just for information
 
 property1: 123
+#spring.profiles.active: rollbacktest
