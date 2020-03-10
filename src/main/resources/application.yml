@@ -2,7 +2,7 @@ spring:
   application:
     name: sample-spring-kotlin-microservice
   datasource:
-    url: jdbc:postgresql://192.168.99.100:5432/postgres
+    url: jdbc:postgresql://postgres:5432/postgres
     username: postgres
     password: postgres123
     hikari:
@@ -11,7 +11,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   rabbitmq:
-    host: 192.168.99.100
+    host: rabbitmq
     port: 5672
     connection-timeout: 2000
 management:
