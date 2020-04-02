@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-spring-kotlin-microservice
+spec:
+  selector:
+    matchLabels:
+      app: sample-spring-kotlin-microservice
+  template:
+    metadata:
+      labels:
+        app: sample-spring-kotlin-microservice
+    spec:
+      containers:
+      - name: sample-spring-kotlin-microservice
+        image: piomin/sample-spring-kotlin-microservice
+        ports:
+        - containerPort: 8080
