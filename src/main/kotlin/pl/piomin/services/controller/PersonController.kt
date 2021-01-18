@@ -6,7 +6,7 @@ import pl.piomin.services.repository.PersonRepository
 
 @RestController
 @RequestMapping("/persons")
-class PersonController(var repository: PersonRepository) {
+class PersonController(val repository: PersonRepository) {
 
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Int): Person? = repository.findById(id)

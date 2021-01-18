@@ -1,48 +1,45 @@
 package pl.piomin.services
 
-import org.junit.Assert
-import org.junit.FixMethodOrder
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.MethodSorters
+import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
-import org.springframework.test.context.junit4.SpringRunner
 import pl.piomin.services.model.Gender
 import pl.piomin.services.model.Person
 
-@RunWith(SpringRunner::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 class PersonControllerTests {
 
     @Autowired
     lateinit var template: TestRestTemplate
 
     @Test
-    fun test1AddPerson() {
+    @Order(1)
+    fun shouldAddPerson() {
         var person = Person(null, "Anna Thompson", 20, Gender.FEMALE)
         person = template.postForObject("/persons", person, Person::class.java)
-        Assert.assertNotNull(person)
-        Assert.assertNotNull(person.id)
-        Assert.assertEquals(4, person.id)
+        Assertions.assertNotNull(person)
+        Assertions.assertNotNull(person.id)
+        Assertions.assertEquals(4, person.id)
     }
 
     @Test
-    fun test2UpdatePerson() {
+    @Order(2)
+    fun shouldUpdatePerson() {
         var person = Person(1, "John Smith", 21, Gender.MALE)
         template.put("/persons", person)
         person = template.getForObject("/persons/{id}", Person::class.java, 1)
-        Assert.assertNotNull(person)
-        Assert.assertEquals(21, person.age)
+        Assertions.assertNotNull(person)
+        Assertions.assertEquals(21, person.age)
     }
 
     @Test
-    fun test3DeletePerson() {
+    @Order(3)
+    fun shouldDeletePerson() {
         template.delete("/persons/{id}", 1)
         val person = template.getForObject("/persons/{id}", Person::class.java, 1)
-        Assert.assertNull(person)
+        Assertions.assertNull(person)
     }
 
 }
