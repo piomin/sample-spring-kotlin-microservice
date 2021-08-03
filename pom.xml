@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.2</version>
+		<version>2.5.3</version>
 	</parent>
 	<groupId>pl.piomin.services</groupId>
 	<artifactId>sample-spring-kotlin-microservice</artifactId>
@@ -14,7 +14,7 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<kotlin.version>1.4.21</kotlin.version>
+		<kotlin.version>1.5.21</kotlin.version>
 	</properties>
 
 	<dependencies>
