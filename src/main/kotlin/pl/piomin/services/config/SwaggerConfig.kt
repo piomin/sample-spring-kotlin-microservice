@@ -36,7 +36,7 @@ class SwaggerConfig(var build: Optional<BuildProperties>, var git: Optional<GitP
                 .apiInfo(apiInfo(version))
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths{ it.equals("/persons")}
+                .paths{ it!!.startsWith("/persons")}
                 .build()
                 .useDefaultResponseMessages(false)
                 .forCodeGeneration(true)
