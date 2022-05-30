@@ -2,17 +2,37 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sample-spring-kotlin-microservice
+  namespace: piomin-dev
 spec:
   selector:
     matchLabels:
-      app: sample-spring-kotlin-microservice
+      app.kubernetes.io/name: sample-spring-kotlin-microservice
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
       labels:
-        app: sample-spring-kotlin-microservice
+        app.kubernetes.io/name: sample-spring-kotlin-microservice
     spec:
       containers:
-      - name: sample-spring-kotlin-microservice
-        image: piomin/sample-spring-kotlin-microservice
+      - image: piomin/sample-spring-kotlin:2022-05-27_00-03-42.244_CEST@sha256:4b3f246953769ea192c93ff73bf10cdff9de2fcca54943566a5062dc9477d800
+        name: sample-spring-kotlin-microservice
         ports:
         - containerPort: 8080
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: sample-spring-kotlin-microservice
+  name: sample-spring-kotlin-microservice
+  namespace: piomin-dev
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: sample-spring-kotlin-microservice
+  type: ClusterIP

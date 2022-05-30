@@ -1,0 +1,74 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: microservices-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      hosts:
+        - sample-spring-boot.apps.r2y7te1z.eastus.aroapp.io
+      tls:
+        mode: PASSTHROUGH
+#        credentialName: springboot-selfsigned-pkcs12
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: sample-spring-boot-vs-via-gw
+spec:
+  hosts:
+    - sample-spring-boot.apps.r2y7te1z.eastus.aroapp.io
+  gateways:
+    - microservices-gateway
+  tls:
+    - route:
+        - destination:
+            host: sample-spring-kotlin-microservice
+            port:
+              number: 8443
+          weight: 100
+      match:
+        - port: 443
+          sniHosts:
+            - sample-spring-boot.apps.r2y7te1z.eastus.aroapp.io
+#apiVersion: networking.istio.io/v1beta1
+#kind: VirtualService
+#metadata:
+#  name: sample-spring-boot-vs-via-gw
+#spec:
+#  hosts:
+#    - sample-spring-boot.apps.r2y7te1z.eastus.aroapp.io
+#  gateways:
+#    - microservices-gateway
+#  tls:
+#    - match:
+#        - port: 443
+#          sniHosts:
+#            - sample-spring-boot.apps.r2y7te1z.eastus.aroapp.io
+#      route:
+#        - destination:
+#            host: sample-spring-kotlin-microservice
+#            port:
+#              number: 8443
+#          weight: 100
+#---
+#apiVersion: networking.istio.io/v1beta1
+#kind: VirtualService
+#metadata:
+#  name: sample-spring-boot-vs
+#  namespace: demo-apps
+#spec:
+#  hosts:
+#    - sample-spring-kotlin-microservice
+#  http:
+#    - route:
+#        - destination:
+#            host: sample-spring-kotlin-microservice
+#            port:
+#              number: 8443
+#          weight: 100

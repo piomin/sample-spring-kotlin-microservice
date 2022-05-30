@@ -1,0 +1,50 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/component: spring-boot
+    app.kubernetes.io/name: spring-boot-actuator-monitor
+    app.kubernetes.io/part-of: openshift-monitoring
+  name: spring-boot-actuator-monitor
+  namespace: openshift-monitoring
+spec:
+  endpoints:
+    - path: /actuator/prometheus
+      port: http
+      interval: 10s
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sample-spring-kotlin-microservice
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: prometheus-all-namespaces-role
+  namespace: openshift-monitoring
+rules:
+  - verbs:
+      - get
+      - watch
+      - list
+    apiGroups:
+      - ''
+    resources:
+      - pods
+      - endpoints
+      - services
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: prometheus-all-namespaces-binding
+  namespace: openshift-monitoring
+subjects:
+  - kind: ServiceAccount
+    name: prometheus-k8s
+    namespace: openshift-monitoring
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus-all-namespaces-role
