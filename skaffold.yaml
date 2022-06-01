@@ -1,8 +1,17 @@
-apiVersion: skaffold/v1
+apiVersion: skaffold/v2beta22
 kind: Config
 build:
   artifacts:
   - image: piomin/sample-spring-kotlin-microservice
     jib: {}
-  tagPolicy:
-    gitCommit: {}
+deploy:
+  helm:
+    releases:
+      - name: sample-spring-kotlin-microservice
+        chartPath: chart
+        valuesFiles:
+          - chart/values.yaml
+        artifactOverrides:
+          image: piomin/sample-spring-kotlin-microservice
+        imageStrategy:
+          helm: {}

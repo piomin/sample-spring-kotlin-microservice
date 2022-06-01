@@ -1,0 +1,5 @@
+image:
+  repository: piomin/sample-spring-kotlin-microservice
+  tag: 1.4.0
+  containerPort: 8080
+  pullPolicy: IfNotPresent
