@@ -157,13 +157,7 @@
 			<plugin>
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>jib-maven-plugin</artifactId>
-				<version>3.1.4</version>
-				<configuration>
-					<to>
-						<image>piomin/sample-spring-kotlin:${project.version}</image>
-						<tags>dev-latest</tags>
-					</to>
-				</configuration>
+				<version>3.2.1</version>
 			</plugin>
 		</plugins>
 	</build>

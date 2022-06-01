@@ -1,0 +1,37 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: microservices-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      hosts:
+        - sample-spring-kotlin.apps-crc.testing
+      tls:
+        mode: PASSTHROUGH
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: sample-spring-boot-vs-via-gw
+spec:
+  hosts:
+    - sample-spring-kotlin.apps-crc.testing
+  gateways:
+    - microservices-gateway
+  tls:
+    - route:
+        - destination:
+            host: sample-spring-kotlin-microservice
+            port:
+              number: 8443
+          weight: 100
+      match:
+        - port: 443
+          sniHosts:
+            - sample-spring-kotlin.apps-crc.testing

@@ -1,0 +1,11 @@
+server.port: 8443
+server.ssl.enabled: true
+server.ssl.key-store: /opt/secret/keystore.p12
+server.ssl.key-store-password: ${PASSWORD}
+
+server.ssl.trust-store: /opt/secret/truststore.p12
+server.ssl.trust-store-password: ${PASSWORD}
+server.ssl.client-auth: NEED
+
+management.server.port: 8080
+management.server.ssl.enabled: false

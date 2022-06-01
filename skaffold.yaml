@@ -3,6 +3,22 @@ kind: Config
 build:
   artifacts:
   - image: piomin/sample-spring-kotlin
-    jib: {}
-  tagPolicy:
-    dateTime: {}
+    jib:
+      args:
+        - -DskipTests
+deploy:
+  kubectl:
+    manifests:
+      - k8s/deployment.yaml
+      - k8s/secret.yaml
+profiles:
+  - name: istio-mutual
+    deploy:
+      kubectl:
+        manifests:
+          - k8s/istio-mutual-tls/**.yaml
+  - name: istio-passthrough
+    deploy:
+      kubectl:
+        manifests:
+          - k8s/istio-passthrough-tls/**.yaml

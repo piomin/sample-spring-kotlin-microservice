@@ -2,16 +2,14 @@ spring.application.name: sample-spring-kotlin-microservice
 management.endpoints.web.exposure.include: '*'
 management.info.java.enabled: true
 
-#server.port: 8443
-#server.ssl.enabled: true
-#server.ssl.key-store-type: PKCS12
-#server.ssl.key-store: /opt/secret/keystore.p12
-#server.ssl.key-store-password: ${PASSWORD}
-#
-#server.ssl.trust-store-type: PKCS12
-#server.ssl.trust-store: /opt/secret/truststore.p12
-#server.ssl.trust-store-password: ${PASSWORD}
-#server.ssl.client-auth: NEED
-#
-#management.server.port: 8080
-#management.server.ssl.enabled: false
+server.port: 8443
+server.ssl.enabled: true
+server.ssl.key-store: /opt/secret/keystore.jks
+server.ssl.key-store-password: ${PASSWORD}
+
+server.ssl.trust-store: /opt/secret/truststore.jks
+server.ssl.trust-store-password: ${PASSWORD}
+server.ssl.client-auth: NEED
+
+management.server.port: 8080
+management.server.ssl.enabled: false

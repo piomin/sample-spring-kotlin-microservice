@@ -19,6 +19,21 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        - containerPort: 8443
+          name: https
+        env:
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: jks-password-secret
+        volumeMounts:
+          - mountPath: /opt/secret
+            name: sample-spring-boot-cert
+      volumes:
+        - name: sample-spring-boot-cert
+          secret:
+            secretName: sample-spring-boot-cert
 ---
 apiVersion: v1
 kind: Service
@@ -30,7 +45,8 @@ spec:
   ports:
   - name: http
     port: 8080
-    targetPort: 8080
+  - name: https
+    port: 8443
   selector:
     app.kubernetes.io/name: sample-spring-kotlin-microservice
   type: ClusterIP

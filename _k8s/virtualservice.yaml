@@ -11,10 +11,10 @@ spec:
         name: https
         protocol: HTTPS
       hosts:
-        - sample-spring-boot.apps.r2y7te1z.eastus.aroapp.io
+        - sample-spring-kotlin.apps-crc.testing
       tls:
-        mode: PASSTHROUGH
-#        credentialName: springboot-selfsigned-pkcs12
+        mode: MUTUAL
+        credentialName: sample-spring-boot-cert
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
