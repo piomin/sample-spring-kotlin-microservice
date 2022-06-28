@@ -1,5 +1,6 @@
 package pl.piomin.services.controller
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.*
 import pl.piomin.services.model.Person
 import pl.piomin.services.repository.PersonRepository
@@ -23,4 +24,8 @@ class PersonController(val repository: PersonRepository) {
     @DeleteMapping("/{id}")
     fun remove(@PathVariable id: Int): Boolean = repository.removeById(id)
 
+    @Value("\${info}")
+    lateinit var info: String
+
+    fun printInfo(): String = info
 }
