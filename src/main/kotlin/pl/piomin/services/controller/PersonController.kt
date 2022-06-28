@@ -27,5 +27,6 @@ class PersonController(val repository: PersonRepository) {
     @Value("\${info}")
     lateinit var info: String
 
+    @GetMapping("/info")
     fun printInfo(): String = info
 }
