@@ -24,9 +24,4 @@ class PersonController(val repository: PersonRepository) {
     @DeleteMapping("/{id}")
     fun remove(@PathVariable id: Int): Boolean = repository.removeById(id)
 
-    @Value("\${info}")
-    lateinit var info: String
-
-    @GetMapping("/info")
-    fun printInfo(): String = info
 }
