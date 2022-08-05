@@ -9,6 +9,9 @@ import pl.piomin.services.repository.PersonRepository
 @RequestMapping("/persons")
 class PersonController(val repository: PersonRepository) {
 
+    @Value("\${PASS}")
+    lateinit var pass: String
+
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Int): Person? = repository.findById(id)
 
@@ -23,5 +26,8 @@ class PersonController(val repository: PersonRepository) {
 
     @DeleteMapping("/{id}")
     fun remove(@PathVariable id: Int): Boolean = repository.removeById(id)
+
+    @GetMapping("/pass")
+    fun printPass() = pass
 
 }
