@@ -9,7 +9,7 @@ import pl.piomin.services.repository.PersonRepository
 @RequestMapping("/persons")
 class PersonController(val repository: PersonRepository) {
 
-    @Value("\${PASS}")
+    @Value("\${PASS:none}")
     lateinit var pass: String
 
     @GetMapping("/{id}")
