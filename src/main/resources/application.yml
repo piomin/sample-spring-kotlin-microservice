@@ -1,2 +1,8 @@
 spring.application.name: sample-spring-kotlin-microservice
 management.endpoints.web.exposure.include: '*'
+
+management:
+  endpoint.health:
+    show-details: always
+    probes:
+      enabled: true
