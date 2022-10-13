@@ -1,5 +1,7 @@
 package pl.piomin.services.controller
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
 import pl.piomin.services.model.Person
 import pl.piomin.services.repository.PersonRepository
@@ -8,8 +10,19 @@ import pl.piomin.services.repository.PersonRepository
 @RequestMapping("/persons")
 class PersonController(val repository: PersonRepository) {
 
+    val log: Logger = LoggerFactory.getLogger(PersonController::class.java)
+
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: Int): Person? = repository.findById(id)
+    fun findById(@PathVariable id: Int): Person? {
+        log.info("findById({})", id)
+        return repository.findById(id)
+    }
+
+    @GetMapping("/age/{age}")
+    fun findByAge(@PathVariable age: Int): List<Person> {
+        log.info("findByAge({})", age)
+        return repository.findByAge(age)
+    }
 
     @GetMapping
     fun findAll(): List<Person> = repository.findAll()

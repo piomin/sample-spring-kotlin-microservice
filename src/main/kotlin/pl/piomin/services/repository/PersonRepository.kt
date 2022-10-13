@@ -1,9 +1,12 @@
 package pl.piomin.services.repository
 
+import net.datafaker.Faker
 import org.springframework.stereotype.Repository
 import pl.piomin.services.model.Gender
 import pl.piomin.services.model.Person
+import java.util.*
 import javax.annotation.PostConstruct
+
 
 @Repository
 class PersonRepository {
@@ -11,12 +14,18 @@ class PersonRepository {
 
     @PostConstruct
     fun init() {
-        save(Person(null, "John Smith", 39, Gender.MALE))
-        save(Person(null, "Paul Walker", 48, Gender.MALE))
-        save(Person(null, "Kate Morgan", 21, Gender.FEMALE))
+        val faker = Faker()
+        for (i in 0..999) {
+            val name = faker.name().fullName()
+            val gender = faker.gender().binaryTypes().uppercase(Locale.ENGLISH)
+            val age = faker.number().numberBetween(18, 85)
+            persons.add(Person(i + 1, name, age, Gender.valueOf(gender)))
+        }
     }
 
     fun findById(id: Int): Person? = persons.singleOrNull { it.id == id }
+
+    fun findByAge(age: Int): List<Person> = persons.filter { it.age == age }
 
     fun findAll(): List<Person> = persons
 
