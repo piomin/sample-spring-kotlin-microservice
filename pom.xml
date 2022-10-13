@@ -6,15 +6,15 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.3</version>
+		<version>2.7.4</version>
 	</parent>
 	<groupId>pl.piomin.services</groupId>
 	<artifactId>sample-spring-kotlin-microservice</artifactId>
-	<version>1.4.0</version>
+	<version>1.5.0</version>
 
 	<properties>
 		<java.version>11</java.version>
-		<kotlin.version>1.5.21</kotlin.version>
+		<kotlin.version>1.6.21</kotlin.version>
 	</properties>
 
 	<dependencies>
@@ -37,12 +37,12 @@
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.2</version>
+			<version>3.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.9.2</version>
+			<version>3.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.micrometer</groupId>
@@ -153,16 +153,22 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-<!--			<plugin>-->
-<!--				<groupId>com.google.cloud.tools</groupId>-->
-<!--				<artifactId>jib-maven-plugin</artifactId>-->
-<!--				<version>2.8.0</version>-->
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.3.0</version>
 <!--				<configuration>-->
 <!--					<to>-->
-<!--						<image>piomin/sample-spring-kotlin</image>-->
+<!--						<image>piomin/sample-spring-kotlin-microservice</image>-->
+<!--						<tags>-->
+<!--							<tag>1.0</tag>-->
+<!--						</tags>-->
 <!--					</to>-->
+<!--					<container>-->
+<!--						<user>999</user>-->
+<!--					</container>-->
 <!--				</configuration>-->
-<!--			</plugin>-->
+			</plugin>
 		</plugins>
 	</build>
 
