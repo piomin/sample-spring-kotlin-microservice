@@ -3,6 +3,8 @@ kind: Config
 build:
   artifacts:
   - image: piomin/sample-spring-kotlin-microservice
-    jib: {}
+    jib:
+      args:
+        - -Pjib
   tagPolicy:
     gitCommit: {}

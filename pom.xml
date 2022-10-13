@@ -61,6 +61,29 @@
 
 	<profiles>
 		<profile>
+			<id>jib</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>3.3.0</version>
+<!--						<configuration>-->
+<!--							<to>-->
+<!--								<image>piomin/sample-spring-kotlin-microservice</image>-->
+<!--								<tags>-->
+<!--									<tag>1.0</tag>-->
+<!--								</tags>-->
+<!--							</to>-->
+<!--							<container>-->
+<!--								<user>999</user>-->
+<!--							</container>-->
+<!--						</configuration>-->
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
 			<id>tomcat</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -152,22 +175,6 @@
 						<version>${kotlin.version}</version>
 					</dependency>
 				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>com.google.cloud.tools</groupId>
-				<artifactId>jib-maven-plugin</artifactId>
-				<version>3.3.0</version>
-<!--				<configuration>-->
-<!--					<to>-->
-<!--						<image>piomin/sample-spring-kotlin-microservice</image>-->
-<!--						<tags>-->
-<!--							<tag>1.0</tag>-->
-<!--						</tags>-->
-<!--					</to>-->
-<!--					<container>-->
-<!--						<user>999</user>-->
-<!--					</container>-->
-<!--				</configuration>-->
 			</plugin>
 		</plugins>
 	</build>
