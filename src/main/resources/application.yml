@@ -6,8 +6,3 @@ management:
     show-details: always
     probes:
       enabled: true
-
-spring:
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher

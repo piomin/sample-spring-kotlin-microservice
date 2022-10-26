@@ -18,7 +18,7 @@ class PersonController(val repository: PersonRepository) {
         return repository.findById(id)
     }
 
-    @GetMapping("/age/{age}")
+    @GetMapping("/ages/{age}")
     fun findByAge(@PathVariable age: Int): List<Person> {
         log.info("findByAge({})", age)
         return repository.findByAge(age)
