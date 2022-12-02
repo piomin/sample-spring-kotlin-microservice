@@ -6,5 +6,6 @@ build:
     jib:
       args:
         - -Pjib
+        - -DskipTests
   tagPolicy:
     gitCommit: {}
