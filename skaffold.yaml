@@ -5,7 +5,7 @@ build:
   - image: piomin/sample-spring-kotlin-microservice
     jib:
       args:
-        - -Pjib
+        - -Pjib,tomcat
         - -DskipTests
   tagPolicy:
     gitCommit: {}
