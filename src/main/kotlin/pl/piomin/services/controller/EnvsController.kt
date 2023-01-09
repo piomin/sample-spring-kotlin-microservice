@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/envs")
 class EnvsController {
 
-    @Value("\${PASS}")
+    @Value("\${PASS:#{null}}")
     lateinit var password: String
 
     @GetMapping
