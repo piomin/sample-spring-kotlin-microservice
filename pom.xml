@@ -14,6 +14,9 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<sonar.projectKey>piomin_sample-spring-kotlin-microservice</sonar.projectKey>
+		<sonar.organization>piomin</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<kotlin.version>1.6.21</kotlin.version>
 	</properties>
 
