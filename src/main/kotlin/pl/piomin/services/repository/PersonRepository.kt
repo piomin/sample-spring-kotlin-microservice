@@ -1,11 +1,11 @@
 package pl.piomin.services.repository
 
+import jakarta.annotation.PostConstruct
 import net.datafaker.Faker
 import org.springframework.stereotype.Repository
 import pl.piomin.services.model.Gender
 import pl.piomin.services.model.Person
 import java.util.*
-import javax.annotation.PostConstruct
 
 
 @Repository
