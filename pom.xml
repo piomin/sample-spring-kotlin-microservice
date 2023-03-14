@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.1</version>
+		<version>3.0.4</version>
 	</parent>
 	<groupId>pl.piomin.services</groupId>
 	<artifactId>sample-spring-kotlin-microservice</artifactId>
@@ -17,7 +17,7 @@
 		<sonar.projectKey>piomin_sample-spring-kotlin-microservice</sonar.projectKey>
 		<sonar.organization>piomin</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<kotlin.version>1.8.0</kotlin.version>
+		<kotlin.version>1.8.10</kotlin.version>
 	</properties>
 
 	<dependencies>
@@ -58,12 +58,12 @@
 		<dependency>
 			<groupId>net.datafaker</groupId>
 			<artifactId>datafaker</artifactId>
-			<version>1.7.0</version>
+			<version>1.8.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.instancio</groupId>
 			<artifactId>instancio-junit</artifactId>
-			<version>2.5.0</version>
+			<version>2.10.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
