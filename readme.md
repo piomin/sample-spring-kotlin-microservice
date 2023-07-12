@@ -8,3 +8,5 @@
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-spring-kotlin-microservice&metric=ncloc)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-microservices-new)
 
 Detailed description can be found here: [Kotlin Microservice with Spring Boot](https://piotrminkowski.com/2019/01/15/kotlin-microservice-with-spring-boot/)
+
+Adding a new commit!
