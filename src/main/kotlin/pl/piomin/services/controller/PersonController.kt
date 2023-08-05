@@ -5,27 +5,32 @@ import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
 import pl.piomin.services.model.Person
 import pl.piomin.services.repository.PersonRepository
+import java.util.concurrent.atomic.AtomicInteger
 
 @RestController
 @RequestMapping("/persons")
 class PersonController(val repository: PersonRepository) {
 
     val log: Logger = LoggerFactory.getLogger(PersonController::class.java)
+    val num: AtomicInteger = AtomicInteger()
 
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Int): Person? {
-        log.info("findById({})", id)
+        log.info("({}) findById({})", id, num.incrementAndGet())
         return repository.findById(id)
     }
 
     @GetMapping("/ages/{age}")
     fun findByAge(@PathVariable age: Int): List<Person> {
-        log.info("findByAge({})", age)
+        log.info("({}) findByAge({})", age, num.incrementAndGet())
         return repository.findByAge(age)
     }
 
     @GetMapping
-    fun findAll(): List<Person> = repository.findAll()
+    fun findAll(): List<Person> {
+        log.info("({}) findAll()", num.incrementAndGet())
+        return repository.findAll()
+    }
 
     @PostMapping
     fun add(@RequestBody person: Person): Person = repository.save(person)
