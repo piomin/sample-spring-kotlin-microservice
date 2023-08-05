@@ -16,13 +16,13 @@ class PersonController(val repository: PersonRepository) {
 
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Int): Person? {
-        log.info("({}) findById({})", id, num.incrementAndGet())
+        log.info("({}) findById({})", num.incrementAndGet(), id)
         return repository.findById(id)
     }
 
     @GetMapping("/ages/{age}")
     fun findByAge(@PathVariable age: Int): List<Person> {
-        log.info("({}) findByAge({})", age, num.incrementAndGet())
+        log.info("({}) findByAge({})", num.incrementAndGet(), age)
         return repository.findByAge(age)
     }
 
