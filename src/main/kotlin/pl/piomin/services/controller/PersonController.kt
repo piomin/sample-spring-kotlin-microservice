@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*
 import pl.piomin.services.model.Person
 import pl.piomin.services.repository.PersonRepository
 import java.util.concurrent.atomic.AtomicInteger
+import kotlin.random.Random
 
 @RestController
 @RequestMapping("/persons")
@@ -17,18 +18,21 @@ class PersonController(val repository: PersonRepository) {
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Int): Person? {
         log.info("({}) findById({})", num.incrementAndGet(), id)
+        randomDelay()
         return repository.findById(id)
     }
 
     @GetMapping("/ages/{age}")
     fun findByAge(@PathVariable age: Int): List<Person> {
         log.info("({}) findByAge({})", num.incrementAndGet(), age)
+        randomDelay()
         return repository.findByAge(age)
     }
 
     @GetMapping
     fun findAll(): List<Person> {
         log.info("({}) findAll()", num.incrementAndGet())
+        randomDelay()
         return repository.findAll()
     }
 
@@ -40,5 +44,9 @@ class PersonController(val repository: PersonRepository) {
 
     @DeleteMapping("/{id}")
     fun remove(@PathVariable id: Int): Boolean = repository.removeById(id)
+
+    private fun randomDelay() {
+        Thread.sleep(Random.nextLong(20, 100))
+    }
 
 }
