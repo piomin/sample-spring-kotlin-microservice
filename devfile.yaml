@@ -1,16 +1,20 @@
 schemaVersion: 2.1.0
 metadata:
-  name: devfile
+  name: sample-spring-kotlin-microservice
+  version: 1.2
+  projectType: Java
+  language: Java
+  icon: https://raw.githubusercontent.com/devfile-samples/devfile-stack-icons/main/spring.svg
 components:
   - name: maven
     container:
       image: maven:latest
       cpuRequest: 200m
-      memoryLimit: 512M
+      memoryLimit: 1024M
       memoryRequest: 256M
       volumeMounts:
         - name: m2
-          path: /.m2
+          path: /home/user/.m2
   - name: m2
     volume:
       size: 2Gi
