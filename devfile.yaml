@@ -1,0 +1,16 @@
+schemaVersion: 2.1.0
+metadata:
+  name: devfile
+components:
+  - name: maven
+    container:
+      image: maven:latest
+      cpuRequest: 200m
+      memoryLimit: 512M
+      memoryRequest: 256M
+      volumeMounts:
+        - name: m2
+          path: /.m2
+  - name: m2
+    volume:
+      size: 2Gi
