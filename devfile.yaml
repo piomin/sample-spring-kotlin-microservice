@@ -5,15 +5,16 @@ metadata:
   language: Java
   icon: https://raw.githubusercontent.com/devfile-samples/devfile-stack-icons/main/spring.svg
 components:
-  - name: maven
+  - name: tools
     container:
-      image: maven:latest
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
       cpuRequest: 200m
-      memoryLimit: 1024M
-      memoryRequest: 256M
-#      volumeMounts:
-#        - name: m2
-#          path: /home/user/.m2
+      memoryLimit: 2048M
+      memoryRequest: 512M
+      mountSources: true
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
   - name: m2
     volume:
       size: 2Gi
