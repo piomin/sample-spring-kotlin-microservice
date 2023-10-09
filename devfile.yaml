@@ -11,9 +11,9 @@ components:
       cpuRequest: 200m
       memoryLimit: 1024M
       memoryRequest: 256M
-      volumeMounts:
-        - name: m2
-          path: /home/user/.m2
+#      volumeMounts:
+#        - name: m2
+#          path: /home/user/.m2
   - name: m2
     volume:
       size: 2Gi
