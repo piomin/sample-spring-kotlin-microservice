@@ -9,7 +9,7 @@ COPY . .
 RUN mvn clean package -Dmaven.test.skip=true
 
 
-FROM openjdk:18.0.2-buster
+FROM openjdk:21-buster
 VOLUME /tmp
 ARG DEPENDENCY=/workspace/app/target/dependency
 COPY --from=build /workspace/app/target/sample-spring-kotlin-microservice-1.5.0.jar app.jar
