@@ -15,9 +15,3 @@ components:
       env:
         - name: JAVA_HOME
           value: /home/user/.sdkman/candidates/java/17.0.3-tem
-      volumeMounts:
-        - name: m2
-          path: /home/user/.m2
-  - name: m2
-    volume:
-      size: 2Gi
