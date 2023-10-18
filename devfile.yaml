@@ -1,7 +1,7 @@
 commands:
 - exec:
     commandLine: mvn clean -Dmaven.repo.local=/home/user/.m2/repository package -Dmaven.test.skip=true
-    component: tools
+    component: kubernetes-deploy
     group:
       isDefault: true
       kind: build
@@ -9,7 +9,7 @@ commands:
   id: build
 - exec:
     commandLine: mvn -Dmaven.repo.local=/home/user/.m2/repository spring-boot:run
-    component: tools
+    component: kubernetes-deploy
     group:
       isDefault: true
       kind: run
@@ -18,7 +18,7 @@ commands:
 - exec:
     commandLine: java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=${DEBUG_PORT},suspend=n
       -jar target/*.jar
-    component: tools
+    component: kubernetes-deploy
     group:
       isDefault: true
       kind: debug
