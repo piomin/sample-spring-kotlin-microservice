@@ -24,7 +24,30 @@ commands:
       kind: debug
     workingDir: ${PROJECT_SOURCE}
   id: debug
+- id: deploy
+  composite:
+    commands:
+      - build
+      - deploy-k8s
+    group:
+      kind: deploy
+      isDefault: true
+- id: deploy-k8s
+  apply:
+    component: kubernetes-deploy
 components:
+- name: kubernetes-deploy
+  attributes:
+    deployment/replicas: 1
+    deployment/cpuRequest: 10m
+    deployment/memoryRequest: 180Mi
+    deployment/container-port: 8080
+  kubernetes:
+    uri: k8s/deployment.yaml
+    endpoints:
+      - name: http-8080
+        targetPort: 8080
+        path: /
 - container:
     command:
     - tail
@@ -61,7 +84,7 @@ metadata:
   - Java
   - Spring
   version: 1.2.0
-schemaVersion: 2.1.0
+schemaVersion: 2.2.0
 starterProjects:
 - git:
     remotes:
