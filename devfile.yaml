@@ -34,7 +34,7 @@ commands:
       isDefault: true
 - id: deploy-k8s
   apply:
-    component: tools
+    component: kubernetes-deploy
 components:
 #- name: kubernetes-deploy
 #  attributes:
@@ -68,7 +68,7 @@ components:
     volumeMounts:
     - name: m2
       path: /home/user/.m2
-  name: tools
+  name: kubernetes-deploy
 - name: m2
   volume:
     size: 3Gi
