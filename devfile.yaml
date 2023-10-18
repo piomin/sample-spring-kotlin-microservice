@@ -34,20 +34,20 @@ commands:
       isDefault: true
 - id: deploy-k8s
   apply:
-    component: kubernetes-deploy
+    component: tools
 components:
-- name: kubernetes-deploy
-  attributes:
-    deployment/replicas: 1
-    deployment/cpuRequest: 10m
-    deployment/memoryRequest: 180Mi
-    deployment/container-port: 8080
-  kubernetes:
-    uri: k8s/deployment.yaml
-    endpoints:
-      - name: http-8080
-        targetPort: 8080
-        path: /
+#- name: kubernetes-deploy
+#  attributes:
+#    deployment/replicas: 1
+#    deployment/cpuRequest: 10m
+#    deployment/memoryRequest: 180Mi
+#    deployment/container-port: 8080
+#  kubernetes:
+#    uri: k8s/deployment.yaml
+#    endpoints:
+#      - name: http-8080
+#        targetPort: 8080
+#        path: /
 - container:
     command:
     - tail
