@@ -1,17 +1,69 @@
-schemaVersion: 2.1.0
-metadata:
-  name: sample-spring-kotlin-microservice
-  projectType: Java
-  language: Java
-  icon: https://raw.githubusercontent.com/devfile-samples/devfile-stack-icons/main/spring.svg
+commands:
+- exec:
+    commandLine: mvn clean -Dmaven.repo.local=/home/user/.m2/repository package -Dmaven.test.skip=true
+    component: tools
+    group:
+      isDefault: true
+      kind: build
+    workingDir: ${PROJECT_SOURCE}
+  id: build
+- exec:
+    commandLine: mvn -Dmaven.repo.local=/home/user/.m2/repository spring-boot:run
+    component: tools
+    group:
+      isDefault: true
+      kind: run
+    workingDir: ${PROJECT_SOURCE}
+  id: run
+- exec:
+    commandLine: java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=${DEBUG_PORT},suspend=n
+      -jar target/*.jar
+    component: tools
+    group:
+      isDefault: true
+      kind: debug
+    workingDir: ${PROJECT_SOURCE}
+  id: debug
 components:
-  - name: tools
-    container:
-      image: quay.io/devfile/universal-developer-image:ubi8-latest
-      cpuRequest: 200m
-      memoryLimit: 2048M
-      memoryRequest: 512M
-      mountSources: true
-      env:
-        - name: JAVA_HOME
-          value: /home/user/.sdkman/candidates/java/17.0.3-tem
+- container:
+    command:
+    - tail
+    - -f
+    - /dev/null
+    endpoints:
+    - name: http-springboot
+      targetPort: 8080
+    - exposure: none
+      name: debug
+      targetPort: 5858
+    env:
+    - name: DEBUG_PORT
+      value: "5858"
+    image: registry.access.redhat.com/ubi9/openjdk-17:1.16
+    memoryLimit: 768Mi
+    mountSources: true
+    volumeMounts:
+    - name: m2
+      path: /home/user/.m2
+  name: tools
+- name: m2
+  volume:
+    size: 3Gi
+metadata:
+  description: Java application using Spring Boot® and OpenJDK 11
+  displayName: Spring Boot®
+  globalMemoryLimit: 2674Mi
+  icon: https://raw.githubusercontent.com/devfile-samples/devfile-stack-icons/main/spring.svg
+  language: Java
+  name: sample-spring-kotlin-microservice
+  projectType: springboot
+  tags:
+  - Java
+  - Spring
+  version: 1.2.0
+schemaVersion: 2.1.0
+starterProjects:
+- git:
+    remotes:
+      origin: https://github.com/odo-devfiles/springboot-ex.git
+  name: springbootproject
