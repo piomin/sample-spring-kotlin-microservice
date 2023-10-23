@@ -2,6 +2,7 @@ package pl.piomin.services.controller
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.*
 import pl.piomin.services.model.Person
 import pl.piomin.services.repository.PersonRepository
@@ -42,10 +43,13 @@ class PersonController(val repository: PersonRepository) {
     @DeleteMapping("/{id}")
     fun remove(@PathVariable id: Int): Boolean = repository.removeById(id)
 
+    @Value("\${app.delay}")
+    var delay: Long = 20
+
     @GetMapping("/delayed")
     fun findAllWithDelay(): List<Person> {
         log.info("({}) findAllDelayed()", num.incrementAndGet())
-        Thread.sleep(Random.nextLong(10, 30))
+        Thread.sleep(Random.nextLong(delay, 2*delay))
         return repository.findAll()
     }
 }

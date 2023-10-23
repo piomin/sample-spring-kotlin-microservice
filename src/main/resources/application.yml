@@ -6,3 +6,5 @@ management:
     show-details: always
     probes:
       enabled: true
+
+app.delay: 20
