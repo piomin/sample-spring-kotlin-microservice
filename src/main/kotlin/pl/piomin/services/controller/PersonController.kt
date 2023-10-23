@@ -45,7 +45,7 @@ class PersonController(val repository: PersonRepository) {
     @GetMapping("/delayed")
     fun findAllWithDelay(): List<Person> {
         log.info("({}) findAllDelayed()", num.incrementAndGet())
-        Thread.sleep(Random.nextLong(10, 30))
+        Thread.sleep(Random.nextLong(30, 60))
         return repository.findAll()
     }
 }
