@@ -1,10 +1,12 @@
 FROM maven:3.9.5-eclipse-temurin as build
+
+USER 1000
 WORKDIR /workspace/app
 
 COPY pom.xml .
 RUN mvn -B -e -C -T 1C org.apache.maven.plugins:maven-dependency-plugin:3.6.0:go-offline
 
-COPY . .
+COPY src src
 RUN mvn clean package -Dmaven.test.skip=true
 
 
