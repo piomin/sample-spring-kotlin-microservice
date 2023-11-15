@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>pl.piomin.services</groupId>
 	<artifactId>sample-spring-kotlin-microservice</artifactId>
-	<version>1.5.2</version>
+	<version>1.5.3</version>
 
 	<properties>
 		<java.version>17</java.version>
