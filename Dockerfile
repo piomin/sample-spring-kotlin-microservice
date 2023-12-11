@@ -1,4 +1,4 @@
-FROM maven:3.9.5-eclipse-temurin as build
+FROM maven:3.9.6-eclipse-temurin as build
 
 USER 1000
 WORKDIR /workspace/app
