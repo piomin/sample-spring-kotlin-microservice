@@ -23,8 +23,10 @@ steps:
 
 - task: AzureSpringCloud@0
   inputs:
-    azureSubscription: 'pool-01-196(d4cde383-3611-4557-b2b1-b64b50378c9d)'
+    azureSubscription: 'pool-01-196'
     Action: 'Deploy'
-    AzureSpringCloud: '/subscriptions/d4cde383-3611-4557-b2b1-b64b50378c9d/resourceGroups/demo-apps/providers/Microsoft.AppPlatform/Spring/sample-spring-cloud-apps'
+    AzureSpringCloud: 'sample-spring-cloud-apps'
     AppName: 'sample-kotlin-spring'
+    DeploymentType: 'Artifacts'
     UseStagingDeployment: true
+    Package: ./target/*.jar
