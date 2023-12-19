@@ -10,8 +10,8 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-- name: subscription
-- name: serviceName
+  subscription: xxx
+  serviceName: yyy
 
 steps:
 - task: Maven@3
