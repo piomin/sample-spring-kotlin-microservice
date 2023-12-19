@@ -27,8 +27,8 @@ steps:
     
 - task: AzureSpringCloud@0
   inputs:
-    azureSubscription: $(subscription)
+    azureSubscription: 'pool-01-196(d4cde383-3611-4557-b2b1-b64b50378c9d)'
     Action: 'Deploy'
-    AzureSpringCloud: $(serviceName)
+    AzureSpringCloud: '/subscriptions/d4cde383-3611-4557-b2b1-b64b50378c9d/resourceGroups/spring-apps/providers/Microsoft.AppPlatform/Spring/spring-cloud-apps'
     AppName: 'account-service'
     UseStagingDeployment: true
