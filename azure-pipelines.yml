@@ -9,6 +9,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+- name: subscription
+- name: serviceName
+
 steps:
 - task: Maven@3
   inputs:
