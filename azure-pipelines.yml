@@ -20,13 +20,11 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-
+    
 - task: AzureSpringCloud@0
   inputs:
-    azureSubscription: 'pool-01-196'
+    azureSubscription: $(subscription)
     Action: 'Deploy'
-    AzureSpringCloud: 'sample-spring-cloud-apps'
-    AppName: 'sample-kotlin-spring'
-    DeploymentType: 'Artifacts'
+    AzureSpringCloud: $(serviceName)
+    AppName: 'account-service'
     UseStagingDeployment: true
-    Package: ./target/*.jar
