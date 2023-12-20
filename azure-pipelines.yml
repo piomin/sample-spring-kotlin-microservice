@@ -32,10 +32,6 @@ steps:
     AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
     UseStagingDeployment: true
-
-- task: ManualIntervention@8
-  inputs:
-    instructions: 'Accept'
     
 - task: AzureSpringCloud@0
   inputs:
