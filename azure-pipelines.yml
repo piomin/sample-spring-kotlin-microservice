@@ -37,6 +37,7 @@ steps:
   inputs:
     instructions: 'Accept'
     emailRecipients: 'piotr.minkowski@gmail.com'
+    onTimeout: reject
     
 - task: AzureSpringCloud@0
   inputs:
