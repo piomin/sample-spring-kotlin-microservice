@@ -29,6 +29,19 @@ steps:
   inputs:
     azureSubscription: 'pool-01-196(d4cde383-3611-4557-b2b1-b64b50378c9d)'
     Action: 'Deploy'
-    AzureSpringCloud: '/subscriptions/d4cde383-3611-4557-b2b1-b64b50378c9d/resourceGroups/spring-apps/providers/Microsoft.AppPlatform/Spring/spring-cloud-apps'
+    AzureSpringCloud: $(serviceName)
+    AppName: 'account-service'
+    UseStagingDeployment: true
+
+- task: ManualIntervention@8
+  inputs:
+    instructions: 'Accept'
+    emailRecipients: 'piotr.minkowski@gmail.com'
+    
+- task: AzureSpringCloud@0
+  inputs:
+    azureSubscription: 'pool-01-196(d4cde383-3611-4557-b2b1-b64b50378c9d)'
+    Action: 'Set Production'
+    AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
     UseStagingDeployment: true
