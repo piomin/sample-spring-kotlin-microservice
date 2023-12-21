@@ -23,7 +23,7 @@ steps:
     
 - task: AzureSpringCloud@0
   inputs:
-    azureSubscription: 'pool-01-196(d4cde383-3611-4557-b2b1-b64b50378c9d)'
+    azureSubscription: $(sub)
     Action: 'Deploy'
     AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
@@ -32,7 +32,7 @@ steps:
     
 - task: AzureSpringCloud@0
   inputs:
-    azureSubscription: 'pool-01-196(d4cde383-3611-4557-b2b1-b64b50378c9d)'
+    azureSubscription: $(sub)
     Action: 'Set Production'
     AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
