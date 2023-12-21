@@ -27,7 +27,6 @@ steps:
     Action: 'Deploy'
     AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
-    UseStagingDeployment: true
     CreateNewDeployment: true
     DeploymentName: test-123
     
@@ -37,5 +36,4 @@ steps:
     Action: 'Set Production'
     AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
-    UseStagingDeployment: true
     DeploymentName: test-123
