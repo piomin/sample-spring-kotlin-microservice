@@ -9,9 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  subscription: xxx
-
 steps:
 - task: Maven@3
   inputs:
@@ -26,18 +23,16 @@ steps:
     
 - task: AzureSpringCloud@0
   inputs:
-    azureSubscription: 'pool-01-196(d4cde383-3611-4557-b2b1-b64b50378c9d)'
+    azureSubscription: $(subscription)
     Action: 'Deploy'
     AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
     UseStagingDeployment: true
-    DeploymentName: 'staging'
     
 - task: AzureSpringCloud@0
   inputs:
-    azureSubscription: 'pool-01-196(d4cde383-3611-4557-b2b1-b64b50378c9d)'
+    azureSubscription: $(subscription)
     Action: 'Set Production'
     AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
     UseStagingDeployment: true
-    DeploymentName: 'production'
