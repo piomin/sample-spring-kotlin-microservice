@@ -28,6 +28,8 @@ steps:
     AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
     UseStagingDeployment: true
+    CreateNewDeployment: true
+    DeploymentName: test-123
     
 - task: AzureSpringCloud@0
   inputs:
@@ -36,3 +38,4 @@ steps:
     AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
     UseStagingDeployment: true
+    DeploymentName: test-123
