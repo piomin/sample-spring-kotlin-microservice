@@ -28,7 +28,7 @@ steps:
     AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
     CreateNewDeployment: true
-    DeploymentName: test-123
+    DeploymentName: envv2
     
 - task: AzureSpringCloud@0
   inputs:
@@ -36,4 +36,4 @@ steps:
     Action: 'Set Production'
     AzureSpringCloud: $(serviceName)
     AppName: 'account-service'
-    DeploymentName: test-123
+    DeploymentName: envv2
