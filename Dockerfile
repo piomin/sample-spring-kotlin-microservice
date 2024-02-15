@@ -12,6 +12,7 @@ RUN mvn clean package -Dmaven.test.skip=true
 
 FROM eclipse-temurin:21-ubi9-minimal
 VOLUME /tmp
+USER 1000
 ARG DEPENDENCY=/workspace/app/target/dependency
 COPY --from=build /workspace/app/target/sample-spring-kotlin-microservice-1.5.2.jar app.jar
 ENTRYPOINT ["java","-jar", "app.jar"]
