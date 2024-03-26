@@ -1,0 +1,41 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: app-template
+  annotations:
+    tags: "java,spring"
+objects:
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: sample-spring-kotlin-microservice
+    spec:
+      selector:
+        matchLabels:
+          app: sample-spring-kotlin-microservice
+      template:
+        metadata:
+          labels:
+            app: sample-spring-kotlin-microservice
+        spec:
+          containers:
+          - name: sample-spring-kotlin-microservice
+            image: image-registry.openshift-image-registry.svc:5000/${namespace}/sample-spring-kotlin-microservice:${version}
+            ports:
+            - containerPort: 8080
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: sample-spring-kotlin-microservice
+    spec:
+      type: ClusterIP
+      selector:
+        app: sample-spring-kotlin-microservice
+      ports:
+        - port: 8080
+          targetPort: 8080
+parameters:
+  - description: Target namespace for the app
+    name: namespace
+  - description: Version of the app
+    name: version
