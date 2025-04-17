@@ -4,6 +4,7 @@ resources:
       type: github
       endpoint: piomin
       name: piomin/azure-pipelines-templates
+      ref: refs/heads/patch-2
 
 jobs:
   - template: java-pipeline.yml@templates  # Template reference
