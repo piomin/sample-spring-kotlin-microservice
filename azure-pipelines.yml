@@ -2,6 +2,7 @@ resources:
   repositories:
     - repository: templates
       type: github
+      endpoint: piomin
       name: piomin/azure-pipelines-templates
 
 jobs:
