@@ -10,4 +10,4 @@ jobs:
   - template: java-pipeline.yml@templates  # Template reference
     parameters:
       appName: 'sample-spring-kotlin-microservice'
-      orgName: 'pminkows'
+      feedName: 'pminkows'
