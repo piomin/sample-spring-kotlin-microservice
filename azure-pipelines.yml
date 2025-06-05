@@ -4,10 +4,19 @@ resources:
       type: github
       endpoint: piomin
       name: piomin/azure-pipelines-templates
-      ref: refs/heads/patch-2
+      ref: refs/heads/master
 
-jobs:
-  - template: java-pipeline.yml@templates  # Template reference
+trigger:
+  - master
+
+pool:
+  name: Azure Pipelines
+  
+stages:
+  - template: java-build-stage.yml@templates
     parameters:
       appName: 'sample-spring-kotlin-microservice'
       feedName: 'pminkows'
+  - template: s2i-build-image-stage.yml@templates
+    parameters:
+      appName: 'sample-spring-kotlin-microservice'
