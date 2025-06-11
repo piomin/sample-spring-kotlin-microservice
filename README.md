@@ -1,7 +1,13 @@
-# Sample Spring Boot Kotlin Microservice
+## Kotlin Microservice with Spring Boot  [![Twitter](https://img.shields.io/twitter/follow/piotr_minkowski.svg?style=social&logo=twitter&label=Follow%20Me)](https://twitter.com/piotr_minkowski)
 
-[![Build Status](https://dev.azure.com/piomin/sample-spring-kotlin-microservice/_apis/build/status%2Fpiomin.sample-spring-kotlin-microservice?branchName=master)](https://dev.azure.com/piomin/sample-spring-kotlin-microservice/_build/latest?definitionId=1&branchName=master)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-spring-kotlin-microservice&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=piomin_sample-spring-kotlin-microservice)
+[![CircleCI](https://circleci.com/gh/piomin/sample-spring-kotlin-microservice.svg?style=svg)](https://circleci.com/gh/piomin/sample-spring-kotlin-microservice)
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-kotlin-microservice)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-spring-kotlin-microservice&metric=bugs)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-microservices-new)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-spring-kotlin-microservice&metric=coverage)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-microservices-new)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-spring-kotlin-microservice&metric=ncloc)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-microservices-new)
+
+Detailed description can be found here: [Kotlin Microservice with Spring Boot](https://piotrminkowski.com/2019/01/15/kotlin-microservice-with-spring-boot/)
 
 A demonstration microservice built with **Spring Boot** and **Kotlin** showcasing modern microservice patterns, cloud-native development, and DevOps practices.
 
