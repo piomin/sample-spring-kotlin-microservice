@@ -28,9 +28,9 @@ A demonstration microservice built with **Spring Boot** and **Kotlin** showcasin
 
 | Technology            | Version | Purpose               |
 |-----------------------|---------|-----------------------|
-| **Spring Boot**       | 3.5.0   | Application framework |
-| **Kotlin**            | 2.1.21  | Programming language  |
-| **Java**              | 17      | Runtime platform      |
+| **Spring Boot**       | 4.0.1   | Application framework |
+| **Kotlin**            | 2.3.0   | Programming language  |
+| **Java**              | 21      | Runtime platform      |
 | **Maven**             | 3.6+    | Build tool            |
 | **SpringDoc OpenAPI** | 2.8.8   | API documentation     |
 | **Micrometer**        | 1.11.4  | Metrics collection    |
