@@ -6,18 +6,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.9</version>
+        <version>4.0.1</version>
     </parent>
     <groupId>pl.piomin.services</groupId>
     <artifactId>sample-spring-kotlin-microservice</artifactId>
-    <version>1.5.4</version>
+    <version>1.5.5</version>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <sonar.projectKey>piomin_sample-spring-kotlin-microservice</sonar.projectKey>
         <sonar.organization>piomin</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <kotlin.version>1.9.25</kotlin.version>
+        <kotlin.version>2.3.0</kotlin.version>
     </properties>
 
     <dependencies>
@@ -40,7 +40,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.8.15</version>
+            <version>3.0.1</version>
         </dependency>
         <dependency>
             <groupId>io.micrometer</groupId>
@@ -50,6 +50,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-resttestclient</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -77,18 +81,6 @@
                         <groupId>com.google.cloud.tools</groupId>
                         <artifactId>jib-maven-plugin</artifactId>
                         <version>3.5.1</version>
-                        <!--						<configuration>-->
-                        <!--							<to>-->
-                        <!--								<image>piomin/sample-spring-kotlin-microservice</image>-->
-                        <!--								<tags>-->
-                        <!--									<tag>${project.version}</tag>-->
-                        <!--									<tag>latest</tag>-->
-                        <!--								</tags>-->
-                        <!--							</to>-->
-                        <!--							<container>-->
-                        <!--								<user>999</user>-->
-                        <!--							</container>-->
-                        <!--						</configuration>-->
                     </plugin>
                 </plugins>
             </build>
