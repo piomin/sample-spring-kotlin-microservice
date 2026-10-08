@@ -2,11 +2,6 @@
 
 [![CircleCI](https://circleci.com/gh/piomin/sample-spring-kotlin-microservice.svg?style=svg)](https://circleci.com/gh/piomin/sample-spring-kotlin-microservice)
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-kotlin-microservice)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-spring-kotlin-microservice&metric=bugs)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-microservices-new)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-spring-kotlin-microservice&metric=coverage)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-microservices-new)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-spring-kotlin-microservice&metric=ncloc)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-microservices-new)
-
 Detailed description can be found here: [Kotlin Microservice with Spring Boot](https://piotrminkowski.com/2019/01/15/kotlin-microservice-with-spring-boot/)
 
 A demonstration microservice built with **Spring Boot** and **Kotlin** showcasing modern microservice patterns, cloud-native development, and DevOps practices.
@@ -21,8 +16,6 @@ A demonstration microservice built with **Spring Boot** and **Kotlin** showcasin
 - **Multiple web server support** (Tomcat, Jetty, Undertow)
 - **Cloud-native** deployment configurations (Kubernetes, OpenShift)
 - **Containerization** with Jib Maven plugin
-- **CI/CD** pipeline with Azure DevOps
-- **Development tools** integration (Skaffold, DevFile)
 
 ## 🛠 Technology Stack
 
