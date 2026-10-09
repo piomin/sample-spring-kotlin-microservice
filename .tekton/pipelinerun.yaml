@@ -64,29 +64,29 @@ spec:
         params:
           - name: JAVA_VERSION
             value: '25'
-      - name: s2i-java
-        runAfter:
-          - maven-build
-        when:
-          - input: $(params.source_branch)
-            operator: in
-            values:
-              - master
-        taskRef:
-          resolver: cluster
-          params:
-            - name: kind
-              value: task
-            - name: name
-              value: s2i-java
-            - name: namespace
-              value: openshift-pipelines
-        workspaces:
-          - name: source
-            workspace: source
-        params:
-          - name: IMAGE
-            value: image-registry.openshift-image-registry.svc:5000/ci/sample-spring-kotlin-microservice:$(params.revision)
+#      - name: s2i-java
+#        runAfter:
+#          - maven-build
+#        when:
+#          - input: $(params.source_branch)
+#            operator: in
+#            values:
+#              - master
+#        taskRef:
+#          resolver: cluster
+#          params:
+#            - name: kind
+#              value: task
+#            - name: name
+#              value: s2i-java
+#            - name: namespace
+#              value: openshift-pipelines
+#        workspaces:
+#          - name: source
+#            workspace: source
+#        params:
+#          - name: IMAGE
+#            value: image-registry.openshift-image-registry.svc:5000/ci/sample-spring-kotlin-microservice:$(params.revision)
   workspaces:
     - name: source
       volumeClaimTemplate:
