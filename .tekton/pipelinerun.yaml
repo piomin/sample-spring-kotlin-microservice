@@ -52,6 +52,12 @@ spec:
               value: maven
             - name: namespace
               value: openshift-pipelines
+        workspaces:
+          - name: source
+            workspace: source
+        params:
+          - name: JAVA_VERSION
+            value: '25'
   workspaces:
     - name: source
       volumeClaimTemplate:
