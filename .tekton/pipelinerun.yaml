@@ -85,6 +85,8 @@ spec:
         params:
           - name: IMAGE
             value: image-registry.openshift-image-registry.svc:5000/ci/sample-spring-kotlin-microservice:$(params.revision)
+          - name: BUILD_EXTRA_ARGS
+            value: "-Dkotlin.compiler.daemon=false"
   workspaces:
     - name: source
       volumeClaimTemplate:
