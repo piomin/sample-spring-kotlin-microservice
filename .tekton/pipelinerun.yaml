@@ -8,6 +8,7 @@ metadata:
     pipelinesascode.tekton.dev/on-target-branch: "[master]"
     pipelinesascode.tekton.dev/task: "git-clone"
     pipelinesascode.tekton.dev/task-2: "maven"
+    pipelinesascode.tekton.dev/task-3: "s2i-java"
     pipelinesascode.tekton.dev/max-keep-runs: "5"
 spec:
   params:
@@ -15,10 +16,13 @@ spec:
       value: "{{ repo_url }}"
     - name: revision
       value: "{{ revision }}"
+    - name: source_branch
+      value: "{{ source_branch }}"
   pipelineSpec:
     params:
       - name: repo_url
       - name: revision
+      - name: source_branch
     workspaces:
       - name: source
     tasks:
@@ -58,6 +62,29 @@ spec:
         params:
           - name: JAVA_VERSION
             value: '25'
+      - name: s2i-java
+        runAfter:
+          - maven-build
+        when:
+          - input: $(params.source_branch)
+            operator: in
+            values:
+              - master
+        taskRef:
+          resolver: cluster
+          params:
+            - name: kind
+              value: task
+            - name: name
+              value: s2i-java
+            - name: namespace
+              value: openshift-pipelines
+        workspaces:
+          - name: source
+            workspace: source
+        params:
+          - name: IMAGE
+            value: image-registry.openshift-image-registry.svc:5000/ci/sample-spring-kotlin-microservice:$(params.revision)
   workspaces:
     - name: source
       volumeClaimTemplate:
