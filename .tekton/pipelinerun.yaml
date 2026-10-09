@@ -36,10 +36,12 @@ spec:
           - name: output
             workspace: source
         params:
-          - name: url
+          - name: URL
             value: $(params.repo_url)
-          - name: revision
+          - name: REVISION
             value: $(params.revision)
+          - name: SSL_VERIFY
+            value: "false"
       - name: maven-build
         taskRef:
           resolver: cluster
