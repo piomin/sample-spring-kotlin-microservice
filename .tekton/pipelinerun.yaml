@@ -6,9 +6,9 @@ metadata:
   annotations:
     pipelinesascode.tekton.dev/on-event: "[pull_request, push]"
     pipelinesascode.tekton.dev/on-target-branch: "[master]"
-    pipelinesascode.tekton.dev/task: "git-clone"
-    pipelinesascode.tekton.dev/task-2: "maven"
-    pipelinesascode.tekton.dev/task-3: "s2i-java"
+#    pipelinesascode.tekton.dev/task: "git-clone"
+#    pipelinesascode.tekton.dev/task-2: "maven"
+#    pipelinesascode.tekton.dev/task-3: "s2i-java"
     pipelinesascode.tekton.dev/max-keep-runs: "5"
 spec:
   params:
